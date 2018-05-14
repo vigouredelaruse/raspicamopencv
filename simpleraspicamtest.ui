@@ -29,7 +29,7 @@
      </property>
     </layout>
    </widget>
-   <widget class="ConsoleViewer" name="widget" native="true">
+   <widget class="ConsoleViewer" name="consoleViewer" native="true">
     <property name="geometry">
      <rect>
       <x>220</x>

@@ -13,8 +13,8 @@ class ConsoleViewer : public QWidget
     void paintEvent(QPaintEvent *);
 
 public:
-   // explicit ConsoleViewer(QWidget *parent = 0);
-   explicit ConsoleViewer(QWidget *parent, const QPoint& Position, const QSize& Size);
+   explicit ConsoleViewer(QWidget *parent = 0);
+   //explicit ConsoleViewer(QWidget *parent, const QPoint& Position, const QSize& Size);
 
 signals:
 

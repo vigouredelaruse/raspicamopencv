@@ -28,13 +28,15 @@ SOURCES += main.cpp\
     acquisitionsensor.cpp \
     consolecapture.cpp \
     acquisitionconverter.cpp \
-    consoleviewer.cpp
+    consoleviewer.cpp \
+    mainviewer.cpp
 
 HEADERS  += simpleraspicamtest.h \
     acquisitionsensor.h \
     consolecapture.h \
     acquisitionconverter.h \
-    consoleviewer.h
+    consoleviewer.h \
+    mainviewer.h
 
 FORMS    += simpleraspicamtest.ui
 

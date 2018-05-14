@@ -33,7 +33,7 @@ SimpleRaspiCamTest::SimpleRaspiCamTest(QWidget *parent) :
 
 
     // ConsoleViewer* view = new ConsoleViewer(this, QPoint(20,20), QSize(320,240));
-    view = new ConsoleViewer(this, QPoint(20,20), QSize(320,240));
+    // view = new ConsoleViewer(this, QPoint(20,20), QSize(320,240));
     //ConsoleCapture capture;
     //AcquisitionConverter converter;
     // QThread captureThread, converterThread;
@@ -54,7 +54,7 @@ SimpleRaspiCamTest::SimpleRaspiCamTest(QWidget *parent) :
 
     // wire sluts
     QObject::connect(&capture, &ConsoleCapture::matReady, &converter, &AcquisitionConverter::processFrame);
-    QObject::connect(&converter, &AcquisitionConverter::imageReady, view, &ConsoleViewer::setImage);
+    QObject::connect(&converter, &AcquisitionConverter::imageReady, ui->consoleViewer, &ConsoleViewer::setImage);
     qDebug() << "wired sluts.";
     //view.show();
 

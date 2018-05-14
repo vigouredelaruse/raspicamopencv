@@ -1,11 +1,17 @@
 #include "consoleviewer.h"
-
+/*
 ConsoleViewer::ConsoleViewer(QWidget *parent, const QPoint& Position, const QSize& Size) : QWidget (parent)
 {
     setAttribute(Qt::WA_OpaquePaintEvent);
 
     move(Position);
     resize(Size);
+}
+*/
+
+ConsoleViewer::ConsoleViewer(QWidget *parent) : QWidget(parent)
+{
+
 }
 
 void ConsoleViewer::paintEvent(QPaintEvent *){
