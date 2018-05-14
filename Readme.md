@@ -1,3 +1,5 @@
+RASPICAMOPENCV
+
 a c++ testbed for experimentation with opencv and live captured video
 
 there are plenty of examples in python for working with opencv on the raspberry pi. this is not one of those.
