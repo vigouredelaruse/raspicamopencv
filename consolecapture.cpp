@@ -1,5 +1,4 @@
 #include "consolecapture.h"
-
 ConsoleCapture::ConsoleCapture(QObject *parent) : QObject(parent)
 {
 
@@ -9,8 +8,13 @@ ConsoleCapture::ConsoleCapture(QObject *parent) : QObject(parent)
 void ConsoleCapture::start(){
     qDebug() << "ConsoleCapture starting";
     if(!m_videoCapture){
+#ifdef  __APPLE_CC__
+        m_videoCapture.reset(new cv::VideoCapture(0));
+#elif __linux__
         m_videoCapture.reset(new raspicam::RaspiCam_Cv());
         m_videoCapture->open();
+#endif
+
         //m_videoCapture.reset(cam);
         qDebug() << "reset RaspiCam_CV";
     }

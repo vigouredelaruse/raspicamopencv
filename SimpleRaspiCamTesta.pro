@@ -41,19 +41,22 @@ HEADERS  += simpleraspicamtest.h \
 FORMS    += simpleraspicamtest.ui
 
 unix:!macx: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_core
+else:  LIBS += -L/usr/local/lib/ -lopencv_core
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_imgcodecs
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_imgcodecs
-else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_imgcodecs
+else:macx: LIBS += -L/usr/local/lib -lopencv_imgcodecs
+else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib -lopencv_imgcodecs
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_highgui
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_highgui
+else:macx: LIBS += -L/usr/local/lib -lopencv_highgui
 else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_highgui
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
@@ -87,9 +90,10 @@ else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_plot
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_viz
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_viz
-else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_viz
+# doesn't exist on os x in 4.00 pre opencv
+# win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_viz
+# else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_viz
+# else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_viz
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
@@ -99,19 +103,26 @@ DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_video
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_video
-else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_video
+macx: LIBS += -L/usr/local/lib -lopencv_video
+unix: LIBS += -L/usr/local/lib -lopencv_video
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lopencv_videoio
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lopencv_videoio
+macx: LIBS += -L/usr/local/lib -lopencv_videoio
+unix: LIBS += -L/usr/local/lib -lopencv_videoio
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/release/ -lraspicam_cv
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../usr/local/lib/debug/ -lraspicam_cv
-else:unix: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lraspicam_cv
+else:unix:!macx: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lraspicam_cv
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
 
 unix:!macx: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lopencv_imgproc
+else:unix:macx: LIBS += -L/usr/local/lib -lopencv_imgproc
 
 INCLUDEPATH += $$PWD/../../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../../usr/local/include
